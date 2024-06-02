@@ -4,21 +4,27 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import Link from "next/link";
+import { Post } from "@/types/Post";
 
 export default function Page() {
   const params = useParams();
   const [categoryName, setCategoryName] = useState("");
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (params && params.catid) {
-      fetchCategory(params.catid);
-      fetchPosts(params.catid);
+      if (typeof params.catid === "string") {
+        fetchCategory(params.catid);
+        fetchPosts(params.catid);
+      } else if (Array.isArray(params.catid)) {
+        fetchCategory(params.catid[0]);
+        fetchPosts(params.catid[0]);
+      }
     }
   }, [params]);
 
-  const fetchCategory = async (catid) => {
+  const fetchCategory = async (catid: string) => {
     const { data, error } = await supabase
       .from("blog_categories")
       .select("name")
@@ -32,7 +38,7 @@ export default function Page() {
     }
   };
 
-  const fetchPosts = async (catid) => {
+  const fetchPosts = async (catid: string) => {
     const { data: categoryData, error: categoryError } = await supabase
       .from("blog_categories")
       .select("id")
