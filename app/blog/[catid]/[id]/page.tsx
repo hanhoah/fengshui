@@ -42,7 +42,7 @@ export default function Page() {
   }
 
   return (
-    <div>
+    <>
       {loading ? (
         <div>lade ...</div>
       ) : (
@@ -63,6 +63,6 @@ export default function Page() {
           )}
         </article>
       )}
-    </div>
+    </>
   );
 }
