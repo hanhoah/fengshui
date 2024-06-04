@@ -86,17 +86,14 @@ export default function Page() {
                 priority
                 src={post.image_url}
                 alt={post.title}
-                width={500}
-                height={500}
+                width={600}
+                height={600}
               />
             )}
 
             {post && post.content && (
               <div dangerouslySetInnerHTML={{ __html: post.content }} />
             )}
-          </article>
-
-          <article className="prose">
             <h2>Passende Produkte</h2>
             {affiliateLinks.map((el: any) => (
               <ProductCard
