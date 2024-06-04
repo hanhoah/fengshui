@@ -73,13 +73,13 @@ const Navbar = () => {
               className="menu menu-lg dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-dvw"
             >
               <li onClick={handleMobileMenuClick}>
-                <Link href="/blog">Blog</Link>
+                <Link href="/kurse">Kurse</Link>
               </li>
               <li onClick={handleMobileMenuClick}>
                 <a>Shopping</a>
               </li>
               <li onClick={handleMobileMenuClick}>
-                <a>Kategorien</a>
+                <a>Blog</a>
                 <ul className="p-2">
                   {categories.map((category) => (
                     <li onClick={handleMobileMenuClick} key={category.id}>
@@ -101,14 +101,14 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-bold text-lg">
           <li>
-            <Link href="/blog">Blog</Link>
+            <Link href="/kurse">Kurse</Link>
           </li>
           <li>
             <a>Shopping</a>
           </li>
           <li>
             <details id="categories-details">
-              <summary>Kategorien</summary>
+              <summary>Blog</summary>
               <ul className="p-2">
                 {categories.map((category) => (
                   <li key={category.id} onClick={handleCategoryClick}>
