@@ -13,22 +13,22 @@ export default function Page() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (params && params.catid) {
-      if (typeof params.catid === "string") {
-        fetchCategory(params.catid);
-        fetchPosts(params.catid);
-      } else if (Array.isArray(params.catid)) {
-        fetchCategory(params.catid[0]);
-        fetchPosts(params.catid[0]);
+    if (params && params.catslug) {
+      if (typeof params.catslug === "string") {
+        fetchCategory(params.catslug);
+        fetchPosts(params.catslug);
+      } else if (Array.isArray(params.catslug)) {
+        fetchCategory(params.catslug[0]);
+        fetchPosts(params.catslug[0]);
       }
     }
   }, [params]);
 
-  const fetchCategory = async (catid: string) => {
+  const fetchCategory = async (catslug: string) => {
     const { data, error } = await supabase
       .from("blog_categories")
       .select("name")
-      .eq("slug", catid)
+      .eq("slug", catslug)
       .single();
 
     if (error) {
@@ -38,11 +38,11 @@ export default function Page() {
     }
   };
 
-  const fetchPosts = async (catid: string) => {
+  const fetchPosts = async (catslug: string) => {
     const { data: categoryData, error: categoryError } = await supabase
       .from("blog_categories")
       .select("id")
-      .eq("slug", catid)
+      .eq("slug", catslug)
       .single();
 
     if (categoryError) {
@@ -91,7 +91,7 @@ export default function Page() {
           {posts.map((post) => (
             <li className="btn join-item" key={post.id}>
               <h2>
-                <Link href={`/blog/${params.catid}/${post.slug}`}>
+                <Link href={`/blog/${params.catslug}/${post.slug}`}>
                   {post.title}
                 </Link>
               </h2>
