@@ -11,7 +11,12 @@ export default function ProductCard(product: Product) {
     <a href={product.link} target="_blank">
       <div className="card w-96 bg-base-100 shadow-xl mt-5">
         <figure>
-          <Image src={product.image_url} alt={product.title} />
+          <Image
+            width="200"
+            height="200"
+            src={product.image_url}
+            alt={product.title}
+          />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{product.title}</h2>
