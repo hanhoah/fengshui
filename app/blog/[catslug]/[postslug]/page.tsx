@@ -34,7 +34,7 @@ export default function Page() {
         console.log("res", res);
       });
     }
-  }, [post]);
+  });
 
   const fetchPost = async (catslug: string, postslug: string) => {
     const { data, error } = await supabase
