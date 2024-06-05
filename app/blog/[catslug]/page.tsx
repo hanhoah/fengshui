@@ -68,36 +68,26 @@ export default function Page() {
 
   return (
     <div>
-      <h1>{categoryName}</h1>
       {loading ? (
-        <div role="alert" className="alert alert-info w-36">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            className="stroke-current shrink-0 w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            ></path>
-          </svg>
-          <span>Bitte warten...</span>
+        <div>
+          <div className="skeleton w-32 h-4 mb-5"></div>
+          <div className="skeleton w-32 h-32"></div>
         </div>
       ) : (
-        <ul className="join join-vertical">
-          {posts.map((post) => (
-            <li className="btn join-item" key={post.id}>
-              <h2>
-                <Link href={`/blog/${params.catslug}/${post.slug}`}>
-                  {post.title}
-                </Link>
-              </h2>
-            </li>
-          ))}
-        </ul>
+        <div>
+          <h1>{categoryName}</h1>
+          <ul className="join join-vertical">
+            {posts.map((post) => (
+              <li className="btn join-item" key={post.id}>
+                <h2>
+                  <Link href={`/blog/${params.catslug}/${post.postslug}`}>
+                    {post.title}
+                  </Link>
+                </h2>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );

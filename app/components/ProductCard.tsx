@@ -9,7 +9,7 @@ type Product = {
 export default function ProductCard(product: Product) {
   return (
     <a href={product.link} target="_blank">
-      <div className="card w-96 bg-base-100 shadow-xl mt-5">
+      <div className="card w-96 bg-base-100 shadow-xl mt-5 z-0">
         <figure>
           <Image
             width="200"

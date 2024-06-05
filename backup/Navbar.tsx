@@ -16,8 +16,7 @@ const Navbar = () => {
     const fetchCategories = async () => {
       const { data, error } = await supabase
         .from("blog_categories")
-        .select("*")
-        .eq("active", true);
+        .select("*");
 
       if (error) {
         console.error("Error fetching categories:", error);
@@ -110,7 +109,7 @@ const Navbar = () => {
           <li>
             <details id="categories-details">
               <summary>Blog</summary>
-              <ul className="p-2 z-50  w-[300px]">
+              <ul className="p-2 z-50">
                 {categories.map((category) => (
                   <li key={category.id} onClick={handleCategoryClick}>
                     <Link href={`/blog/${category.slug}`}>{category.name}</Link>
@@ -124,11 +123,9 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      {/* 
       <div className="navbar-end">
         <a className="btn">Button</a>
       </div>
-      */}
     </div>
   );
 };

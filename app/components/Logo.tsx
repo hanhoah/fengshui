@@ -9,4 +9,3 @@ const Logo = () => {
 };
 
 export default Logo;
-<h1>The Fengshui Website </h1>;

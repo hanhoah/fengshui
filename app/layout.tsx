@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Navbar";
+import { getFengShuiWeisheit } from "@/lib/config";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +20,7 @@ export default function RootLayout({
     <html lang="en" data-theme="light">
       <body className="{inter.className}">
         <header className="bg-primary p-4 text-secondary">
-          <h1>Willkommen auf meiner Feng Shui Website!</h1>
+          <h1>{getFengShuiWeisheit()}</h1>
         </header>
         <Navbar />
         <div className="m-5">{children}</div>
