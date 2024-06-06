@@ -1,21 +1,12 @@
-import { supabase } from "@/lib/supabaseClient";
-import BlogCard from "@/app/components/BlogCard";
+import BlogCardsList from "./components/BlogCardsList";
+
+//By exporting a revalidate variable from our component, we can specify how many seconds we consider this data to be “fresh”.
+export const revalidate = 60;
 
 export default async function Page() {
-  const { data: posts } = await supabase
-    .from("blog_posts_categories_view")
-    .select("*")
-    .eq("homepage", true);
-
   return (
     <>
-      <section className="m-0 p-0 w-full">
-        <div className="flex flex-col md:flex-row md:space-x-5">
-          {posts?.map((post) => (
-            <BlogCard key={post.postslug} post={post} />
-          ))}
-        </div>
-      </section>
+      <BlogCardsList schluessel="homepage" wert="true" />
     </>
   );
 }

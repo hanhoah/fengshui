@@ -18,7 +18,7 @@ const fengShuiWeisheiten = [
     "⛲ Ein Feng Shui Brunnen bringt frische Energie und Wohlstand.",
     "👀 Klare Sichtlinien fördern einen klaren Geist.",
     "🏡 Ein Zen-Garten bietet einen Rückzugsort für Meditation und Reflexion.",
-    "🌺 eng Shui ist keine starre Regel, sondern eine flexible Lebensweise, die sich anpassen kann."
+    "🌺 Feng Shui ist keine starre Regel, sondern eine flexible Lebensweise, die sich anpassen kann."
   ];
   
     export const getFengShuiWeisheit = () => {
