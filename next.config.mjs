@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: "*.media-amazon.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "*.websale.net",
+        port: "",
+      },
     ],
   },
 };

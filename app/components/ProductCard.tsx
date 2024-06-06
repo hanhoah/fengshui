@@ -9,7 +9,7 @@ type Product = {
 export default function ProductCard(product: Product) {
   return (
     <a href={product.link} target="_blank">
-      <div className="card w-96 bg-base-100 hover:bg-base-300 shadow-xl mt-5 z-0">
+      <div className="card w-96 bg-base-100 hover:border-2 shadow-xl mt-5 z-0">
         <figure>
           <Image
             src={product.image_url}
@@ -17,7 +17,7 @@ export default function ProductCard(product: Product) {
             width={200}
             height={200}
             className="w-auto h-full"
-            quality={20}
+            quality={40}
           />
         </figure>
         <div className="card-body">

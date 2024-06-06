@@ -14,7 +14,7 @@ function BlogCard({ post }: { post: Post }) {
               height={350}
               src={post.image_url}
               alt="Shoes"
-              quality={20}
+              quality={40}
             />
           </figure>
           <div className="card-body">
