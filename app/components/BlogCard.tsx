@@ -15,6 +15,8 @@ function BlogCard({ post }: { post: Post }) {
               src={post.image_url}
               alt="Shoes"
               quality={40}
+              placeholder="blur"
+              blurDataURL={post.image_url}
             />
           </figure>
           <div className="card-body">

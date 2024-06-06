@@ -18,6 +18,8 @@ export default function ProductCard(product: Product) {
             height={200}
             className="w-auto h-full"
             quality={40}
+            placeholder="blur"
+            blurDataURL={product.image_url}
           />
         </figure>
         <div className="card-body">
