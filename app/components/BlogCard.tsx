@@ -1,12 +1,13 @@
 import React from "react";
 import { Post } from "@/types/Post";
 import Image from "next/image";
+import Link from "next/link";
 import extractFirstParagraph from "@/utils/helper";
 
 function BlogCard({ post }: { post: Post }) {
   return (
     <div key={post.postslug}>
-      <a href={`/blog/${post.catslug}/${post.postslug}`}>
+      <Link href={`/blog/${post.catslug}/${post.postslug}`}>
         <div className="card card-compact w-80 bg-base-100 shadow-xl mb-10">
           <figure>
             <Image
@@ -24,7 +25,7 @@ function BlogCard({ post }: { post: Post }) {
             <p>{extractFirstParagraph(post.content)}</p>
           </div>
         </div>
-      </a>
+      </Link>
     </div>
   );
 }
