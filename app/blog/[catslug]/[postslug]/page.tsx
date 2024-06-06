@@ -30,11 +30,9 @@ export default function Page() {
   useEffect(() => {
     console.log("post has changed, ", post);
     if (post) {
-      fetchAffiliateLinks(post).then((res) => {
-        console.log("res", res);
-      });
+      fetchAffiliateLinks(post).then((res) => {});
     }
-  });
+  }, [post]);
 
   const fetchPost = async (catslug: string, postslug: string) => {
     const { data, error } = await supabase
@@ -53,7 +51,6 @@ export default function Page() {
 
   const fetchAffiliateLinks = async (post: Post) => {
     console.log("fetching affiliate links");
-    console.log("post", post);
     const { data, error } = await supabase
       .from("affiliate_links_view")
       .select("*")
@@ -89,6 +86,7 @@ export default function Page() {
                   alt={post.title}
                   width={600}
                   height={600}
+                  quality={50}
                 />
               )}
 

@@ -9,20 +9,19 @@ type Product = {
 export default function ProductCard(product: Product) {
   return (
     <a href={product.link} target="_blank">
-      <div className="card w-96 bg-base-100 shadow-xl mt-5 z-0">
+      <div className="card w-96 bg-base-100 hover:bg-base-300 shadow-xl mt-5 z-0">
         <figure>
           <Image
-            width="200"
-            height="200"
             src={product.image_url}
             alt={product.title}
+            width={200}
+            height={200}
+            className="w-auto h-full"
+            quality={20}
           />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{product.title}</h2>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Amazon</button>
-          </div>
         </div>
       </div>
     </a>

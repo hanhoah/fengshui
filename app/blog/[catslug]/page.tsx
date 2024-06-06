@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import Link from "next/link";
 import { Post } from "@/types/Post";
+import BlogCard from "@/app/components/BlogCard";
 
 export default function Page() {
   const params = useParams();
@@ -38,28 +39,21 @@ export default function Page() {
   };
 
   return (
-    <div>
-      {loading ? (
-        <div>
-          <div className="skeleton w-32 h-4 mb-5"></div>
-          <div className="skeleton w-32 h-32"></div>
-        </div>
-      ) : (
-        <div>
-          <h1>{categoryName}</h1>
-          <ul className="join join-vertical">
+    <>
+      <section className="m-0 p-0 w-full">
+        {loading ? (
+          <div>
+            <div className="skeleton w-32 h-4 mb-5"></div>
+            <div className="skeleton w-32 h-32"></div>
+          </div>
+        ) : (
+          <div className="flex flex-col md:flex-row md:space-x-5">
             {posts.map((post) => (
-              <li className="btn join-item" key={post.id}>
-                <h2>
-                  <Link href={`/blog/${params.catslug}/${post.postslug}`}>
-                    {post.title}
-                  </Link>
-                </h2>
-              </li>
+              <BlogCard key={post.postslug} post={post} />
             ))}
-          </ul>
-        </div>
-      )}
-    </div>
+          </div>
+        )}
+      </section>
+    </>
   );
 }
