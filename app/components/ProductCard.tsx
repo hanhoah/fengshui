@@ -17,7 +17,7 @@ export default function ProductCard(product: Product) {
             width={200}
             height={200}
             className="w-auto h-full"
-            quality={40}
+            quality={80}
             placeholder="blur"
             blurDataURL={product.image_url}
           />

@@ -15,7 +15,7 @@ function BlogCard({ post }: { post: Post }) {
               height={350}
               src={post.image_url}
               alt="Shoes"
-              quality={40}
+              quality={80}
               placeholder="blur"
               blurDataURL={post.image_url}
             />
