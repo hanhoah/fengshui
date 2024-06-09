@@ -1,27 +1,31 @@
 import React from "react";
 import BlogCard from "@/app/components/BlogCard";
-import { supabase } from "@/lib/supabaseClient";
+import { Post } from "@/types/Post";
 
 export default async function BlogCardsList({
-  schluessel,
-  wert,
+  posts,
+  direction = "vertical",
 }: {
-  schluessel: string;
-  wert: string;
+  posts: Post[] | null;
+  direction?: "horizontal" | "vertical";
 }) {
-  const { data: posts } = await supabase
-    .from("blog_posts_categories_view")
-    .select("*")
-    .eq(schluessel, wert);
+  console.log(direction);
 
-  console.log(schluessel, wert, posts);
+  // vertical as default
+  let coltailwindClasses = "flex flex-col md:flex-col";
 
+  if (direction == "horizontal") {
+    coltailwindClasses =
+      "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4";
+  }
   return (
     <>
-      <section className="m-0 p-0 w-full">
-        <div className="flex flex-col md:flex-row md:space-x-5">
+      <section className="m-0 p-0 w-full ">
+        <div className={coltailwindClasses}>
           {posts?.map((post) => (
-            <BlogCard key={post.postslug} post={post} />
+            <div key={post.postslug}>
+              <BlogCard post={post} />
+            </div>
           ))}
         </div>
       </section>

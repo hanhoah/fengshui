@@ -1,5 +1,6 @@
 // Post.ts
 export interface Post {
+    id: number;
     title: string;
     content: string;
     postslug: string;
@@ -7,4 +8,3 @@ export interface Post {
     image_url: string;
     // Weitere Felder hinzufügen, falls erforderlich
   }
-  

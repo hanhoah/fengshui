@@ -21,8 +21,10 @@ function BlogCard({ post }: { post: Post }) {
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">{post.title}</h2>
-            <p>{extractFirstParagraph(post.content)}</p>
+            <h2 className="card-title ">{post.title}</h2>
+            <p className="no-underline">
+              {extractFirstParagraph(post.content)}
+            </p>
           </div>
         </div>
       </Link>
