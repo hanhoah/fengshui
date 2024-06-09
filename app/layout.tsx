@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Navbar";
 import { getFengShuiWeisheit } from "@/lib/config";
+import Search from "./components/Search";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +21,12 @@ export default function RootLayout({
     <html lang="en" data-theme="light">
       <body className="{inter.className}">
         <header className="bg-primary p-4 text-secondary">
-          <h1>{getFengShuiWeisheit()}</h1>
+          <h1 className="text-white">{getFengShuiWeisheit()}</h1>
         </header>
-        <Navbar />
+        <div className="mx-auto sticky top-0 z-50 flex flex-col md:flex-row">
+          <Navbar />
+          <Search placeholder="" />
+        </div>
         <div className="m-5">{children}</div>
         <footer className="bg-secondary p-4 text-primary">
           <p>
