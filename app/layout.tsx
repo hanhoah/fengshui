@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -25,7 +26,9 @@ export default function RootLayout({
         </header>
         <div className="mx-auto sticky top-0 z-50 flex flex-col md:flex-row">
           <Navbar />
-          <Search placeholder="" />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Search placeholder="" />
+          </Suspense>
         </div>
         <div className="m-5">{children}</div>
         <footer className="bg-secondary p-4 text-primary">
