@@ -1,11 +1,28 @@
 import { notFound } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
 import ProductCardsList from "@/app/components/ProductCardsList";
 import BlogPost from "@/app/components/BlogPost";
 import BlogCardsList from "@/app/components/BlogCardsList";
+import { Metadata } from "next";
+import { fetchBlogPost, fetchSimilarBlogPosts } from "@/lib/blog";
 
 interface Params {
   postslug: string;
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> {
+  const { postslug } = params;
+  let post = await fetchBlogPost(postslug);
+  if (!post) {
+    notFound();
+  }
+  return {
+    title: post.title,
+    description: post.content,
+  };
 }
 
 //By exporting a revalidate variable from our component, we can specify how many seconds we consider this data to be “fresh”.
@@ -14,22 +31,12 @@ export const revalidate = 60;
 export default async function Page({ params }: { params: Params }) {
   const { postslug } = params;
 
-  const { data: post } = await supabase
-    .from("blog_posts_categories_view")
-    .select("id,title, image_url, content, postslug, catslug")
-    .eq("postslug", postslug)
-    .single();
-
+  let post = await fetchBlogPost(postslug);
   if (!post) {
     notFound();
   }
 
-  const { data: moreposts } = await supabase
-    .from("blog_posts_categories_view")
-    .select("id,title, image_url, content, postslug, catslug")
-    .eq("catslug", post.catslug)
-    .neq("postslug", postslug)
-    .limit(5);
+  const similarBlogPosts = await fetchSimilarBlogPosts(post.catslug, postslug);
 
   return (
     <>
@@ -40,7 +47,7 @@ export default async function Page({ params }: { params: Params }) {
           <div className="prose m-5">
             <h2>Weitere Posts: </h2>
           </div>
-          <BlogCardsList posts={moreposts} />
+          <BlogCardsList posts={similarBlogPosts} />
         </div>
       </div>
     </>

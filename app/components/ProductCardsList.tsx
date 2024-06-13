@@ -1,13 +1,9 @@
 import React from "react";
-import { supabase } from "@/lib/supabaseClient";
 import ProductCard from "@/app/components/ProductCard";
+import { fetchAffiliateLinks } from "@/lib/affiliate";
 
 export default async function ProductCardsList({ postid }: { postid: number }) {
-  const { data: afflinks } = await supabase
-    .from("affiliate_links_view")
-    .select("*")
-    .eq("blog_post_id", postid);
-
+  const afflinks = await fetchAffiliateLinks(postid);
   return (
     <>
       <div className="relative -left-6 md:left-0">

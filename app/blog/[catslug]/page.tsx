@@ -1,5 +1,5 @@
-import { supabase } from "@/lib/supabaseClient";
 import BlogCardsList from "@/app/components/BlogCardsList";
+import { fetchBlogPostsByCategory } from "@/lib/blog";
 
 interface Params {
   catslug: string;
@@ -10,12 +10,7 @@ export const revalidate = 60;
 
 export default async function Page({ params }: { params: Params }) {
   const { catslug } = params;
-
-  const { data } = await supabase
-    .from("blog_posts_categories_view")
-    .select("id,title, image_url, content, postslug, catslug")
-    .eq("catslug", catslug)
-    .limit(25);
+  let data = await fetchBlogPostsByCategory(catslug);
 
   return (
     <>
