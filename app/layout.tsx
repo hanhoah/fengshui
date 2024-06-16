@@ -5,6 +5,7 @@ import "./globals.css";
 import Navbar from "./Navbar";
 import { getFengShuiWeisheit } from "@/lib/config";
 import Search from "./components/Search";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-theme="light">
-      <body className="{inter.className}">
+      <body className="{inter.className} max-w-screen-2xl">
         <header className="bg-primary p-4 text-secondary">
           <h1 className="text-white">{getFengShuiWeisheit()}</h1>
         </header>

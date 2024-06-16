@@ -13,7 +13,6 @@ export default async function Page({
 }) {
   const query = searchParams?.query || "";
   const posts = await fetchBlogPosts(query);
-  console.log("posts", posts);
 
   return (
     <>
