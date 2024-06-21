@@ -9,8 +9,6 @@ export default async function BlogCardsList({
   posts: Post[] | null;
   direction?: "horizontal" | "vertical";
 }) {
-  console.log(direction);
-
   // vertical as default
   let coltailwindClasses = "flex flex-col md:flex-col";
 

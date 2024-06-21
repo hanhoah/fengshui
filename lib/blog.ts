@@ -5,6 +5,7 @@ export async function fetchBlogPosts(query: string) {
         const { data } = await supabase
           .from("blog_posts_categories_view")
           .select("id,title, image_url, content, postslug, catslug")
+          .order('id', { ascending: false })
           .eq("homepage", "true");
         return data;
       } else {

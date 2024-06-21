@@ -17,6 +17,11 @@ const nextConfig = {
         hostname: "*.websale.*",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "*.kopp-verlag.de",
+        port: "",
+      },
     ],
   },
 };
